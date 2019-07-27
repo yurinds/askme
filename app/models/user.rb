@@ -10,11 +10,12 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
+  validates :username, length: { maximum: 40 }
 
   attr_accessor :password
 
   validates :password, presence: true, on: :create
-  validates_confirmation_of :password
+  validates :password, confirmation: true
 
   before_save :encrypt_password
 
