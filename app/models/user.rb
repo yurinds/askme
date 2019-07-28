@@ -4,13 +4,13 @@ require 'openssl'
 
 class User < ApplicationRecord
   ITERATIONS = 20_000
-  # DIGEST = OpenSSL::Digest::SHA256.new
+  DIGEST = OpenSSL::Digest::SHA256.new
 
   has_many :questions
 
-  # validates :email, :username, presence: true
-  # validates :email, :username, uniqueness: true
-  # validates :username, length: { maximum: 40 }
+  validates :email, :username, presence: true
+  validates :email, :username, uniqueness: true
+  validates :username, length: { maximum: 40 }
 
   attr_accessor :password
 
