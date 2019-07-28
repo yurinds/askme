@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
-  validates :username, length: { maximum: 40 }
+  # validates :username, length: { maximum: 40 }
 
   attr_accessor :password
 
