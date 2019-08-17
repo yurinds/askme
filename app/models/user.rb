@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }
 
   validate :username_can_contain_only_valid_characters
+  validate :email_must_match_format
 
   attr_accessor :password
 
@@ -25,6 +26,11 @@ class User < ApplicationRecord
     unless /\A[a-zA-Z\d_]+\Z/.match?(username)
       errors.add(:username, 'can contain only latin letters, numbers, and the sign "_"')
     end
+  end
+
+  def email_must_match_format
+    regex_email = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
+    errors.add(:email, 'is not an email') unless regex_email.match?(email)
   end
 
   def encrypt_password
