@@ -8,8 +8,7 @@ class UsersController < ApplicationController
         name: 'Dmitrii',
         username: 'yurinds',
         avatar_url: 'https://www.artwall.ru/products/autosticker_1157/image?width=400&fmt=.jpg'
-      ),
-      User.new(id: 2, name: 'Lena', username: 'bunina')
+      )
     ]
   end
 
@@ -25,7 +24,8 @@ class UsersController < ApplicationController
       avatar_url: 'https://www.artwall.ru/products/autosticker_1157/image?width=400&fmt=.jpg'
     )
     @questions = [
-      Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2016'))
+      Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2016')),
+      Question.new(text: 'Где живёшь?', created_at: Date.parse('28.03.2016'))
     ]
   end
 end
