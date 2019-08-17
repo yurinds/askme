@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  before_validation :username_to_downcase
+
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
   validates :username, length: { maximum: 40 }
@@ -26,6 +28,10 @@ class User < ApplicationRecord
     unless /\A[a-zA-Z\d_]+\Z/.match?(username)
       errors.add(:username, 'can contain only latin letters, numbers, and the sign "_"')
     end
+  end
+
+  def username_to_downcase
+    username.downcase!
   end
 
   def email_must_match_format
