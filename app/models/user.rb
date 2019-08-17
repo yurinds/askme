@@ -12,12 +12,20 @@ class User < ApplicationRecord
   validates :email, :username, uniqueness: true
   validates :username, length: { maximum: 40 }
 
+  validate :username_can_contain_only_valid_characters
+
   attr_accessor :password
 
   validates :password, presence: true, on: :create
   validates :password, confirmation: true
 
   before_save :encrypt_password
+
+  def username_can_contain_only_valid_characters
+    unless /\A[a-zA-Z\d_]+\Z/.match?(username)
+      errors.add(:username, 'can contain only latin letters, numbers, and the sign "_"')
+    end
+  end
 
   def encrypt_password
     if password.present?
