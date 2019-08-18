@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[a-zA-Z\d_]+\Z/,
                                  message: 'can contain only latin letters, numbers, and the sign "_"' }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/,
-                             message: 'is not an email' }
+                              message: 'is not an email' }
 
   attr_accessor :password
 
@@ -27,6 +27,8 @@ class User < ApplicationRecord
   before_save :encrypt_password
 
   def username_to_downcase
+    return nil if username.nil?
+
     username.downcase!
   end
 
