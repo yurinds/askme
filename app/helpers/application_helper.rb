@@ -14,6 +14,10 @@ module ApplicationHelper
     "#{declination(questions.size, 'вопрос', 'вопроса', 'вопросов')}"
   end
 
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "fa fa-#{icon_class}"
+  end
+
   def declination(number, krokodil, krokodila, krokodilov)
     # Сначала, проверим входные данные на правильность
     number = 0 if number.nil? || !number.is_a?(Numeric)
