@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :load_user, except: %i[index create new]
+
   def index
     @users = User.all
   end
@@ -22,19 +24,24 @@ class UsersController < ApplicationController
   def edit; end
 
   def show
-    # @new_question = Question.new
-    # @user = User.new(
-    #  name: 'Dmitrii',
-    #  username: 'yurinds',
-    #  avatar_url: 'https://www.artwall.ru/products/autosticker_1157/image?width=400&fmt=.jpg'
-    # )
-    # @questions = [
-    #  Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2016')),
-    #  Question.new(text: 'Где живёшь?', created_at: Date.parse('28.03.2016'))
-    # ]
+    @questions = @user.questions.order(created_at: :desc)
+
+    @new_question = @user.questions.build
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Данные обновлены'
+    else
+      render 'edit'
+    end
   end
 
   private
+
+  def load_user
+    @user ||= User.find params[:id]
+  end
 
   def user_params
     # берём объект params, потребуем у него иметь ключ
