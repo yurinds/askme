@@ -14,8 +14,10 @@ class User < ApplicationRecord
   validates :email, :username, uniqueness: true
   validates :username, length: { maximum: 40 }
 
-  validate :username_can_contain_only_valid_characters
-  validate :email_must_match_format
+  validates :username, format: { with: /\A[a-zA-Z\d_]+\Z/,
+                                 message: 'can contain only latin letters, numbers, and the sign "_"' }
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/,
+                             message: 'is not an email' }
 
   attr_accessor :password
 
@@ -24,19 +26,8 @@ class User < ApplicationRecord
 
   before_save :encrypt_password
 
-  def username_can_contain_only_valid_characters
-    unless /\A[a-zA-Z\d_]+\Z/.match?(username)
-      errors.add(:username, 'can contain only latin letters, numbers, and the sign "_"')
-    end
-  end
-
   def username_to_downcase
     username.downcase!
-  end
-
-  def email_must_match_format
-    regex_email = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
-    errors.add(:email, 'is not an email') unless regex_email.match?(email)
   end
 
   def encrypt_password
