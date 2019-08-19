@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.3'
 gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+ 
+gem "nokogiri", ">= 1.10.4"
 
 # Этот гем нужен для сборки js-скриптов на heroku
 gem 'uglifier'
