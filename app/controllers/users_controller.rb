@@ -50,8 +50,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @comment = Question.find(user.id)
-    @comment.destroy
+    @questions = Question.where(user_id: @user.id)
+    @questions.each(&:destroy)
     @user.destroy
 
     redirect_to root_url, notice: 'Пользователь успешно удалён!'
