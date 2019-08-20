@@ -50,7 +50,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @comment = Question.find(user.id)
+    @comment.destroy
     @user.destroy
+
     redirect_to root_url, notice: 'Пользователь успешно удалён!'
   end
 
