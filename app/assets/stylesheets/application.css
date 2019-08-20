@@ -20,6 +20,7 @@
  *= require layout
  *= require users
  *= require questions
- *
+ *= require questions
+ *= require jquery.simplecolorpicker.css
  *= require_self 
  */

@@ -13,10 +13,14 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require jquery.simplecolorpicker.js
 //= require_tree .
 $(function () {
   $('#ask-button').click(function () {
     $('#ask-form').slideToggle(300);
     return false;
   });
+});
+$(function () {
+  $('#user_background_color').simplecolorpicker()
 });

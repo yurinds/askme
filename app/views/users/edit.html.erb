@@ -1,7 +1,7 @@
 <div class="container content-wrapper buffer-both">
   <h1 class="title-medium">Править профиль</h1>
   <div class="column-1-2">
-    <%= form_for(@user) do |f| %>
+    <%= form_with model: @user, local: true do |f| %>
       <%# Вывод ошибок валидации пользователя, если есть.%>
       <% if @user.errors.any? %>
         <div class="form-errors">
@@ -23,6 +23,10 @@
       <div class="form-field">
         <%= f.label 'URL вашей аватарки', class: 'form-label' %>
         <%= f.text_field :avatar_url, class: 'form-text-field' %>
+      </div>
+      <div class="form-field">
+        <%= f.label 'Цвет фона аватарки', class: 'form-label' %>
+        <%= select(:user, :background_color, ApplicationHelper::COLORS_FOR_COLORPICKER) %>
       </div>
       <div class="buffer-top-large buffer-bottom">
         Если не хотите менять пароль — оставьте эти поля пустыми!
