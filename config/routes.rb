@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root to: 'users#index'
 
-  resources :users, except: [:destroy]
+  resources :users
   resources :sessions, only: %i[new create destroy]
   resources :questions, except: %i[show new index]
 

@@ -1,5 +1,5 @@
 <div class="container content-wrapper buffer-both">
-  <h1 class="title-medium">Править профиль</h1>
+  <h1 class="title-medium">Править профиль </h1>
   <div class="column-1-2">
     <%= form_with model: @user, local: true do |f| %>
       <%# Вывод ошибок валидации пользователя, если есть.%>
@@ -40,7 +40,11 @@
         <%= f.password_field :password_confirmation, class: 'form-text-field' %>
       </div>
       <div class="form-action buffer-top">
-        <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
+        <span>
+          <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
+          <%= link_to '(Удалить профиль)', @user, data: {:confirm => 'Are you sure?'}, 
+                                                :method => :delete, class: 'form-link' %>
+        </span>
       </div>
     <% end %>
   </div>

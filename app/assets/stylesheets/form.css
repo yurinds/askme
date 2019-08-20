@@ -26,6 +26,10 @@
   margin-top: 20px;
 }
 
+.form-link {
+  margin-left: 20px;
+}
+
 .form-errors {
   color: #dc554f;
 }
