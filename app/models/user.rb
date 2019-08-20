@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   validates :username, format: { with: /\A[a-zA-Z\d_]+\Z/,
                                  message: 'can contain only latin letters, numbers, and the sign "_"' }
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/,
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-zа-я0-9]+\.)+[a-zа-я]{2,})\z/i,
                               message: 'is not an email' }
 
   attr_accessor :password
