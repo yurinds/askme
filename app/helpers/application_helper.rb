@@ -9,11 +9,6 @@ module ApplicationHelper
     end
   end
 
-  def questions_count_text(questions)
-    text = "У пользователя всего #{questions.size} " \
-    "#{declination(questions.size, 'вопрос', 'вопроса', 'вопросов')}"
-  end
-
   def fa_icon(icon_class)
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
