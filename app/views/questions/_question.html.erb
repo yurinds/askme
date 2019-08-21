@@ -5,8 +5,11 @@
     <div class="question-text text-lead">
       <%= question.text %>
     </div>
+    <% if question.author.present? %>
+      <%= link_to "от @#{question.author.username}", user_path(question.author), class: "question-author" %>
+    <% end %>
     <% if question.answer.present? %>
-      <div class="question-answer text-lead">
+      <div class="question-answer">
         <%= question.answer %>
       </div>
     <% end %>

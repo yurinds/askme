@@ -10,13 +10,13 @@
   padding: 10px 15px;
 }
 
-.question + .question {
+.question+.question {
   margin-top: 10px;
 }
 
 .question-text,
 .question-answer {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .question-text {
@@ -24,6 +24,12 @@
 }
 
 .question-answer {
+  margin-top: 20px;
+}
+
+.question-author {
+  color: #8d0909;
+  font-size: 14px;
 }
 
 .question-date {
