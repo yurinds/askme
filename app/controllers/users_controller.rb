@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :load_user, except: %i[index create new]
 
   before_action :authorize_user, except: %i[index new create show]
+  before_action :check_color, only: %i[create update]
 
   def index
     @users = User.all
@@ -61,6 +62,12 @@ class UsersController < ApplicationController
 
   def authorize_user
     reject_user unless @user == current_user
+  end
+
+  def check_color
+    user_color = params[:user][:background_color]
+    available_colors = ApplicationHelper::COLORS_FOR_COLORPICKER.map { |item| item[0] }
+    params[:user][:background_color] = '' unless available_colors.include?(user_color)
   end
 
   def load_user
