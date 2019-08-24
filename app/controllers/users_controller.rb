@@ -66,8 +66,8 @@ class UsersController < ApplicationController
 
   def check_color
     user_color = params[:user][:background_color]
-    available_colors = ApplicationHelper::COLORS_FOR_COLORPICKER.map { |item| item[0] }
-    params[:user][:background_color] = '' unless available_colors.include?(user_color)
+    available_colors = ApplicationHelper::COLORS_FOR_COLORPICKER.map(&:first)
+    params[:user][:background_color] = nil unless available_colors.include?(user_color)
   end
 
   def load_user
