@@ -7,6 +7,5 @@ class Question < ApplicationRecord
   has_many :hashtag_questions
   has_many :hashtags, through: :hashtag_questions
 
-  validates :text, presence: true
-  validates :text, length: { maximum: 255 }
+  validates :text, presence: true, length: { maximum: 255 }
 end
