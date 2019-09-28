@@ -5,7 +5,9 @@ module HashtagsHelper
     hashtags = Hashtag.find_hashtags(text)
 
     hashtags.each do |hashtag|
-      text.gsub!(/#{hashtag.name}/i, link_to(hashtag.name, hashtag_path(hashtag), class: 'hashtag'))
+      text.gsub!(/#{hashtag.name}/i) do |match|
+        link_to(match, hashtag_path(hashtag), class: 'hashtag')
+      end
     end
     text.html_safe
   end
