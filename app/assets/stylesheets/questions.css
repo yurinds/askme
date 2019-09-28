@@ -36,6 +36,12 @@
   font-size: 14px;
 }
 
+.question-user-link {
+  color: #262732;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .question-date {
   color: #a0a0a0;
   font-size: 12px;
@@ -50,4 +56,10 @@
 
 .question-actions a {
   margin-left: 10px;
+}
+
+.question-user-link:hover {
+  color: rgb(63, 0, 0);
+  transition: all ease .3s;
+  text-decoration: underline
 }

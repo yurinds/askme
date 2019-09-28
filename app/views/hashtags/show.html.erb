@@ -1,0 +1,22 @@
+<div class="content-wrapper buffer-both">
+  <div class="buffer-both">
+    <h1 class="title-medium text-center">
+      Все вопросы и ответы по тегу <%= @hashtag.name %>
+    </h1>
+  </div>
+</div>
+<% if @questions.empty? %>
+  <div class="content-wrapper buffer-both">
+    <div class="buffer-both">
+      <h1 class="title-medium text-center">
+        Нет ни одного вопроса :( 
+      </h1>
+    </div>
+  </div>
+<% else %>
+  <div class="user-questions buffer-both">
+    <div class="questions-list">
+      <%= render partial: 'questions/question', collection: @questions, locals: {display_user: true} %>
+    </div>
+  </div>
+<% end %>

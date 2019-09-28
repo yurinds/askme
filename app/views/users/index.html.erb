@@ -1,4 +1,4 @@
-<div class="content-wrapper buffer-both text-center">
+<div class="column-3-4 content-wrapper text-center buffer-both">
   <div class="buffer-both">
     <h1 class="title-medium">Наши пользователи</h1>
   </div>
@@ -7,6 +7,16 @@
       <div class="user-image-div user-image-div-small">
         <%= link_to image_tag(user_avatar(user), class: 'user-image'), user_path(user) %>
       </div>
+    </div>
+  <% end %>
+</div>
+<div class="column-1-4 column-1-4-right content-wrapper buffer-both">
+  <div class="buffer-both">
+    <h1 class="title-medium text-center">Теги</h1>
+  </div>
+  <% @hashtags.each do |hashtag| %>
+    <div class="users-list-item">
+      <%= link_to hashtag.name, hashtag_path(hashtag) %>
     </div>
   <% end %>
 </div>
