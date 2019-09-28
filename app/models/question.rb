@@ -8,4 +8,11 @@ class Question < ApplicationRecord
   has_many :hashtags, through: :hashtag_questions
 
   validates :text, presence: true, length: { maximum: 255 }
+
+  after_save :find_or_create_hashtags
+
+  def find_or_create_hashtags
+    hashtags = Hashtag.find_hashtags(text) | Hashtag.find_hashtags(answer)
+    self.hashtags = hashtags
+  end
 end

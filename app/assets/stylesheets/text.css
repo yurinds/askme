@@ -43,3 +43,9 @@ a {
 .text-center {
   text-align: center;
 }
+
+.hashtag:hover {
+  color: rgb(63, 0, 0);
+  transition: all ease .3s;
+  text-decoration: underline
+}
