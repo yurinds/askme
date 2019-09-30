@@ -12,7 +12,7 @@ class Hashtag < ApplicationRecord
 
     raw_hashtags.map do |item|
       # запрос в цикле - не хорошо, пока не знаю как исправить
-      where(name: item).first || create(name: item)
+      find_or_create_by(name: item)
     end
   end
 end
