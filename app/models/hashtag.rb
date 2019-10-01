@@ -4,6 +4,8 @@ class Hashtag < ApplicationRecord
   has_many :hashtag_questions
   has_many :questions, through: :hashtag_questions
 
+  scope :having_questions, -> { joins(:hashtag_questions).order(:name).distinct }
+
   def self.find_hashtags(string)
     return [] if string.nil?
 

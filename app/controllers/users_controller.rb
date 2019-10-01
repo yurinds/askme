@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @hashtags = get_actual_hashtags
+    @hashtags = Hashtag.having_questions
   end
 
   def new
@@ -81,9 +81,5 @@ class UsersController < ApplicationController
     # набор инпутов. Ничего лишнего, кроме них, в пользователя не попадёт
     params.require(:user).permit(:email, :password, :password_confirmation,
                                  :name, :username, :avatar_url, :background_color)
-  end
-
-  def get_actual_hashtags
-    Hashtag.joins(:hashtag_questions).order(:name).distinct
   end
 end
