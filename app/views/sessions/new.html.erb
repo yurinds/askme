@@ -2,7 +2,7 @@
   <h1 class="title-medium">Войти на сайт</h1>
   <div class="column-1-2">
     <div class="form">
-      <%= form_with url: sessions_path, local: true do %>
+      <%= form_with url: session_path, local: true do %>
         <div class="form-field">
           <%= label_tag :email, 'Логин (email)', class: 'form-label' %>
           <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
