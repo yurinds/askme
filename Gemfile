@@ -15,6 +15,11 @@ gem "nokogiri", ">= 1.10.4"
 # Этот гем нужен для сборки js-скриптов на heroku
 gem 'uglifier'
 
+gem 'recaptcha', require: 'recaptcha/rails'
+
+# для скрытия перемнных окружения
+gem 'figaro'
+
 # В продакшне (на хероку) мы используем БД postrgres, 
 # поэтому нам нужен гем pg
 group :production do
