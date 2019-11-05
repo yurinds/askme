@@ -1,24 +1,56 @@
-# README
+# ASKME
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Приложение является простеньким клоном популярного сервиса [ask.fm](https://ask.fm/)
 
-Things you may want to cover:
+Используемые технологии:
 
-* Ruby version
+- Простая аутентификация без использования дополнительных библиотек;
+- Защита от спама с помощью Google reCAPTCHA.
 
-* System dependencies
+Требуемая версия Ruby и Rails:
 
-* Configuration
+```
+ruby >= 2.5.1
+rails ~> 5.2.3
+```
 
-* Database creation
+Для запуска выполните в терминале следующие шаги:
 
-* Database initialization
+1. Установите `Bundler`, если он ещё не установлен:
 
-* How to run the test suite
+```
+gem install bundler
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+2. Склонируйте репозиторий:
 
-* Deployment instructions
+```
+git clone https://github.com/yurinds/askme.git
 
-* ...
+# переход в папку с приложением
+cd askme
+```
+
+3. Установите все зависимости:
+
+```
+bundle install
+```
+
+4. Выполните миграции БД:
+
+```
+bundle exec rails db:migrate
+```
+
+5. Запустите сервер приложения:
+
+```
+bundle exec rails s
+```
+
+6. Откройте в браузере:
+
+```
+http://localhost:3000
+```
