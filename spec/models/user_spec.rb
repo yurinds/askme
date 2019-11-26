@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user, email: 'qwerty@example.com') }
 
   context 'validations check' do
     it { should have_many(:questions) }
@@ -17,5 +17,14 @@ RSpec.describe User, type: :model do
     it { should allow_value('safjhskakjk2142_fs1@sd-jd-iek.ru').for(:email) }
 
     it { should validate_presence_of(:password).on(:create) }
+  end
+
+  describe '.authenticate' do
+    context 'when email and password is right' do
+      it { expect(User.authenticate(user.email, '123456')).to eq user }
+    end
+    context 'when email or password is wrong' do
+      it { expect(User.authenticate(user.email, '23659')).to eq nil }
+    end
   end
 end
