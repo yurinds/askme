@@ -30,10 +30,8 @@ ActiveRecord::Schema.define(version: 2019_09_25_204540) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "author_id"
-    t.integer "{:foreign_key=>true}_id"
     t.index ["author_id"], name: "index_questions_on_author_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
-    t.index ["{:foreign_key=>true}_id"], name: "index_questions_on_{:foreign_key=>true}_id"
   end
 
   create_table "users", force: :cascade do |t|
