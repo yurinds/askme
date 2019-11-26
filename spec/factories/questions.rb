@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :question do
-    sequence(:text) { |n| "В каком году была космическая одиссея #{n}?" }
+    association :user
 
-    sequence(:level) { |n| n % 15 }
+    sequence(:text) { |n| "В каком году была космическая одиссея #{n}?" }
+    sequence(:answer) { |n| "Неопределено #{n}?" }
   end
 end
