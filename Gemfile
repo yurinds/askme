@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
  
 gem "nokogiri", ">= 1.10.4"
+gem "loofah", ">= 2.3.1"
 
 # Этот гем нужен для сборки js-скриптов на heroku
 gem 'uglifier'
@@ -19,6 +20,7 @@ gem 'recaptcha', require: 'recaptcha/rails'
 
 # для скрытия перемнных окружения
 gem 'figaro'
+
 
 # В продакшне (на хероку) мы используем БД postrgres, 
 # поэтому нам нужен гем pg
@@ -40,6 +42,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.9'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 
